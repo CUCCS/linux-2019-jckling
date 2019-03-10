@@ -267,7 +267,7 @@ diff ubuntu-server-autoinstall.seed example-preseed.txt > diff.txt
 ```
 
 使用 Beyond Compare
-- 下载并安装后，直接将需要对比的两个文分别件拖入左、右窗口，将对比结果导出为 [diff.html](diff.html)
+- 下载并安装后，直接将需要对比的两个文分别件拖入左、右窗口，将对比结果导出为 [diff.html](https://htmlpreview.github.io/?https://github.com/CUCCS/linux-2019-jckling/blob/0x01/0x01/diff.html)
 
 其中每一部分的差异如下：
 - stretch → xenial
