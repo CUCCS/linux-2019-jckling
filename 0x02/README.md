@@ -18,25 +18,25 @@ asciinema auth
 ### vimtutor 操作录像
 
 #### Lesson-1
-[![Lesson-1](https://asciinema.org/a/233867.png)](https://asciinema.org/a/233867)
+<a href="https://asciinema.org/a/233867?autoplay=1"><img src="https://asciinema.org/a/233867.png" width="666"/></a>
 
 #### Lesson-2
-[![Lesson-2](https://asciinema.org/a/233868.png)](https://asciinema.org/a/233868)
+<a href="https://asciinema.org/a/233868?autoplay=1"><img src="https://asciinema.org/a/233868.png" width="666"/></a>
 
 #### Lesson-3
-[![Lesson-3](https://asciinema.org/a/233875.png)](https://asciinema.org/a/233875)
+<a href="https://asciinema.org/a/233875?autoplay=1"><img src="https://asciinema.org/a/233875.png" width="666"/></a>
 
 #### Lesson-4
-[![Lesson-4](https://asciinema.org/a/233870.png)](https://asciinema.org/a/233870)
+<a href="https://asciinema.org/a/233870?autoplay=1"><img src="https://asciinema.org/a/233870.png" width="666"/></a>
 
 #### Lesson-5
-[![Lesson-5](https://asciinema.org/a/233871.png)](https://asciinema.org/a/233871)
+<a href="https://asciinema.org/a/233871?autoplay=1"><img src="https://asciinema.org/a/233871.png" width="666"/></a>
 
 #### Lesson-6
-[![Lesson-6](https://asciinema.org/a/233872.png)](https://asciinema.org/a/233872)
+<a href="https://asciinema.org/a/233872?autoplay=1"><img src="https://asciinema.org/a/233872.png" width="666"/></a>
 
 #### Lesson-7
-[![Lesson-7](https://asciinema.org/a/233873.png)](https://asciinema.org/a/233873)
+<a href="https://asciinema.org/a/233873?autoplay=1"><img src="https://asciinema.org/a/233873.png" width="666"/></a>
 
 ### 自查清单
 
@@ -173,8 +173,7 @@ command -v cd
 type cd
 which cd
 ```
-
-[![asciicast](https://asciinema.org/a/234240.png)](https://asciinema.org/a/234240)
+<a href="https://asciinema.org/a/234240?autoplay=1"><img src="https://asciinema.org/a/234240.png" width="666"/></a>
 
 ### 压缩与解压缩
 
@@ -434,3 +433,4 @@ traceroute
 ## 参阅
 - [awesome-cheatsheets/editors/vim.txt](https://github.com/skywind3000/awesome-cheatsheets/blob/master/editors/vim.txt)
 - [SED(Stream EDitor)](https://explainshell.com/explain?cmd=sed)
+- [Sharing & embedding](https://asciinema.org/docs/embedding)
