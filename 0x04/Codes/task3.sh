@@ -89,7 +89,7 @@ while getopts "iabcdeu:h" opt; do
     u) top "$OPTARG";;
     h|?)
       usage "$0"
-      exit 1
+      exit 0
       ;;
   esac
 done

@@ -120,7 +120,7 @@ while getopts "iabcdeh" opt; do
       ;;
     h|?)
       usage "$0"
-      exit 1
+      exit 0
       ;;
   esac
 done

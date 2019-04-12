@@ -113,7 +113,7 @@ while getopts "f:q:r:t:p:s:ch" opt; do
       ;;
     h|?)
       usage "$0"
-      exit 1
+      exit 0
       ;;
   esac
 done
