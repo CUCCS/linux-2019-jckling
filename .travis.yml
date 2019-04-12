@@ -12,9 +12,33 @@ before_install:
 
 script:
   - bash test.sh
+  - bash 0x04/Codes/task0.sh -h
+  - bash 0x04/Codes/task0.sh -f test0/ -r 50 -t "linux"
+  - bash 0x04/Codes/task1.sh -h
+  - bash 0x04/Codes/task1.sh -f test1/ -r 50 -t "CUC"
+  - bash 0x04/Codes/task2.sh -h
+  - bash 0x04/Codes/task2.sh -i
+  - bash 0x04/Codes/task2.sh -a
+  - bash 0x04/Codes/task2.sh -b
+  - bash 0x04/Codes/task2.sh -c
+  - bash 0x04/Codes/task2.sh -d
+  - bash 0x04/Codes/task2.sh -e
+  - bash 0x04/Codes/task3.sh -h
+  - bash 0x04/Codes/task3.sh -i
+  - bash 0x04/Codes/task3.sh -a
+  - bash 0x04/Codes/task3.sh -b
+  - bash 0x04/Codes/task3.sh -c
+  - bash 0x04/Codes/task3.sh -d
+  - bash 0x04/Codes/task3.sh -e
+  - bash 0x04/Codes/task3.sh -u "/ksc.html"
+  - bash 0x04/Codes/task3.sh -u "/"
 
 after_script:
   - /usr/bin/shellcheck test.sh
+  - /usr/bin/shellcheck 0x04/Codes/task0.sh
+  - /usr/bin/shellcheck 0x04/Codes/task1.sh
+  - /usr/bin/shellcheck 0x04/Codes/task2.sh
+  - /usr/bin/shellcheck 0x04/Codes/task3.sh
 
 after_failure:
   - id
