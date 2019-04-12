@@ -9,13 +9,13 @@ before_install:
     - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
     - /usr/bin/shellcheck --version
+    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/worldcupplayerinfo.tsv"
+    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/web_log.tsv"
 
 script:
   - bash test.sh
   - bash 0x04/Codes/task0.sh -h
-  - bash 0x04/Codes/task0.sh -f test0/ -r 50 -t "linux"
   - bash 0x04/Codes/task1.sh -h
-  - bash 0x04/Codes/task1.sh -f test1/ -r 50 -t "CUC"
   - bash 0x04/Codes/task2.sh -h
   - bash 0x04/Codes/task2.sh -i
   - bash 0x04/Codes/task2.sh -a
