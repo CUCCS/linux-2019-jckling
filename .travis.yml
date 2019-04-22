@@ -12,7 +12,13 @@ before_install:
     - sudo apt-get install ghostscript
     - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/worldcupplayerinfo.tsv"
     - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/web_log.tsv"
-    - git clone https://github.com/jckling/Img.git
+    - git config user.email jckling@163.com
+    - git config user.name jckling
+    - mkdir Img && cd Img
+    - git init
+    - git remote add origin https://${github_token}@github.com/jckling/Img.git
+    - git pull origin master
+    - cd ..
 
 script:
   - bash test.sh
@@ -60,12 +66,11 @@ after_failure:
   - cat error.log
 
 after_success:
-  - git config user.email jckling@163.com
-  - git config user.name jckling
   - cd Img
   - git add .
   - git commit -m "Travis Image Test"
-  - git push "https://${github_token}@github.com/jckling/Img.git" master
+  - git push origin master -f
+  - cd ..
 
 notifications:
   email:
