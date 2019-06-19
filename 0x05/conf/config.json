@@ -1,0 +1,359 @@
+{
+    "browser_verify_rule": [],
+    "filter_rule": [
+      {
+        "enable": false,
+        "action": "accept",
+        "matcher": "localhost"
+      },
+      {
+        "enable": true,
+        "action": "block",
+        "code": "403",
+        "matcher": "attack_sql_0"
+      },
+      {
+        "enable": true,
+        "action": "block",
+        "code": "403",
+        "matcher": "attack_backup_0"
+      },
+      {
+        "enable": true,
+        "action": "block",
+        "code": "403",
+        "matcher": "attack_scan_0"
+      },
+      {
+        "enable": true,
+        "action": "block",
+        "code": "403",
+        "matcher": "attack_code_0"
+      },
+      {
+        "enable": true,
+        "code": "404",
+        "action": "block",
+        "matcher": "my_rule_only_domain_access",
+        "custom_response": true,
+        "response": "error - 1"
+      },
+      {
+        "enable": true,
+        "matcher": "my_rule_dvwa_white_list",
+        "action": "block",
+        "code": "404",
+        "custom_response": true,
+        "response": "error - 2"
+      },
+      {
+        "enable": true,
+        "matcher": "my_rule_abandon_curl",
+        "action": "block",
+        "code": "404",
+        "custom_response": true,
+        "response": "error - curl"
+      },
+      {
+        "enable": true,
+        "code": "404",
+        "matcher": "my_rule_dvwa_sql",
+        "custom_response": false,
+        "action": "block"
+      },
+      {
+        "enable": true,
+        "code": "404",
+        "action": "block",
+        "matcher": "my_rule_wordpress_hotfix",
+        "custom_response": true,
+        "response": "error - hotfix"
+      },
+      {
+        "enable": true,
+        "code": "404",
+        "action": "block",
+        "matcher": "my_rule_only_domain_access_dvwa",
+        "custom_response": true,
+        "response": "error - 1"
+      }
+    ],
+    "readonly": false,
+    "static_file_rule": [],
+    "proxy_pass_rule": [
+      {
+        "enable": true,
+        "matcher": "dvwa",
+        "upstream": "dvwa",
+        "proxy_host": ""
+      },
+      {
+        "enable": true,
+        "matcher": "wordpress",
+        "upstream": "wordpress_http",
+        "proxy_host": ""
+      },
+      {
+        "enable": true,
+        "matcher": "wordpress",
+        "upstream": "wordpress_https",
+        "proxy_host": ""
+      }
+    ],
+    "summary_request_enable": true,
+    "summary_group_persistent_enable": true,
+    "base_uri": "/verynginx",
+    "dashboard_host": "",
+    "response": {
+      "error - 2": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面-2\n<br>\nDVWA 不允许访问！"
+      },
+      "demo_response_json": {
+        "content_type": "application/json",
+        "body": "{\"msg\":\"soms text\",\"status\":\"success\"}"
+      },
+      "demo_response_html": {
+        "content_type": "text/html",
+        "body": "This is a html demo response"
+      },
+      "error - curl": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面\n<br>\ncurl 不允许访问！"
+      },
+      "error - 4": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面-4\n<br>\n访问速率过快！"
+      },
+      "error - hotfix": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面\n<br>\n不允许访问！"
+      },
+      "error - 3": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面-3\n<br>\nVeryNginx 不允许访问！"
+      },
+      "error - 1": {
+        "content_type": "text/html",
+        "body": "自定义的友好错误提示信息页面-1\n<br>\n请使用域名访问本站点"
+      }
+    },
+    "frequency_limit_enable": true,
+    "uri_rewrite_rule": [
+      {
+        "to_uri": "/verynginx/$1",
+        "matcher": "demo_verynginx_short_uri",
+        "replace_re": "^/vn/(.*)",
+        "enable": true
+      }
+    ],
+    "cookie_prefix": "verynginx",
+    "filter_enable": true,
+    "browser_verify_enable": true,
+    "scheme_lock_rule": [
+      {
+        "enable": false,
+        "matcher": "verynginx",
+        "scheme": "https"
+      }
+    ],
+    "frequency_limit_rule": [
+      {
+        "enable": true,
+        "separate": [
+          "ip"
+        ],
+        "code": "404",
+        "time": "1",
+        "matcher": "dvwa",
+        "count": "50",
+        "custom_response": true,
+        "response": "error - 4"
+      },
+      {
+        "enable": true,
+        "separate": [
+          "ip"
+        ],
+        "code": "404",
+        "time": "1",
+        "matcher": "wordpress",
+        "count": "20",
+        "custom_response": true,
+        "response": "error - 4"
+      }
+    ],
+    "summary_with_host": false,
+    "scheme_lock_enable": false,
+    "matcher": {
+      "demo_verynginx_short_uri": {
+        "URI": {
+          "value": "^/vn",
+          "operator": "≈"
+        }
+      },
+      "attack_sql_0": {
+        "Args": {
+          "operator": "≈",
+          "name_operator": "*",
+          "value": "select.*from"
+        }
+      },
+      "demo_other_verynginx_uri": {
+        "URI": {
+          "value": "/redirect_to_verynginx",
+          "operator": "="
+        }
+      },
+      "wordpress": {
+        "Host": {
+          "operator": "=",
+          "value": "wp.sec.cuc.edu.cn"
+        }
+      },
+      "my_rule_dvwa_sql": {
+        "Args": {
+          "name_operator": "=",
+          "name_value": "id",
+          "operator": "≈",
+          "value": "(select|union|or|order by|from|where)"
+        }
+      },
+      "my_rule_dvwa_white_list": {
+        "Host": {
+          "operator": "=",
+          "value": "dvwa.sec.cuc.edu.cn"
+        },
+        "IP": {
+          "operator": "!=",
+          "value": "192.168.1.12"
+        }
+      },
+      "attack_scan_0": {
+        "UserAgent": {
+          "value": "(nmap|w3af|netsparker|nikto|fimap|wget)",
+          "operator": "≈"
+        }
+      },
+      "my_rule_only_domain_access": {
+        "Host": {
+          "operator": "≈",
+          "value": "192\\.168\\.56\\.102.*"
+        }
+      },
+      "my_rule_wordpress_hotfix": {
+        "URI": {
+          "operator": "≈",
+          "value": "^/wp-json/wp/v2/users.*"
+        },
+        "Host": {
+          "operator": "=",
+          "value": "wp.sec.cuc.edu.cn"
+        }
+      },
+      "attack_backup_0": {
+        "URI": {
+          "value": "\\.(htaccess|bash_history|ssh|sql)$",
+          "operator": "≈"
+        }
+      },
+      "my_rule_abandon_curl": {
+        "UserAgent": {
+          "operator": "≈",
+          "value": "curl"
+        }
+      },
+      "verynginx": {
+        "URI": {
+          "value": "^/verynginx/",
+          "operator": "≈"
+        }
+      },
+      "localhost": {
+        "IP": {
+          "value": "127.0.0.1",
+          "operator": "="
+        }
+      },
+      "attack_code_0": {
+        "URI": {
+          "value": "\\.(git|svn|\\.)",
+          "operator": "≈"
+        }
+      },
+      "dvwa": {
+        "Host": {
+          "operator": "=",
+          "value": "dvwa.sec.cuc.edu.cn"
+        }
+      },
+      "all_request": {},
+      "my_rule_verynginx_white_list": {
+        "IP": {
+          "operator": "!=",
+          "value": "127.0.0.1"
+        },
+        "URI": {
+          "operator": "≈",
+          "value": "^/verynginx/index.html"
+        }
+      }
+    },
+    "summary_temporary_period": 60,
+    "static_file_enable": true,
+    "summary_group_temporary_enable": true,
+    "backend_upstream": {
+      "wordpress_http": {
+        "node": {
+          "wordpress_http": {
+            "host": "127.0.0.1",
+            "weight": "1",
+            "scheme": "https",
+            "port": "4433"
+          }
+        },
+        "method": "random"
+      },
+      "wordpress_https": {
+        "node": {
+          "wordpress_https": {
+            "host": "127.0.0.1",
+            "weight": "1",
+            "scheme": "https",
+            "port": "4433"
+          }
+        },
+        "method": "random"
+      },
+      "dvwa": {
+        "node": {
+          "dvwa": {
+            "host": "127.0.0.1",
+            "weight": "1",
+            "scheme": "http",
+            "port": "8090"
+          }
+        },
+        "method": "random"
+      }
+    },
+    "redirect_enable": true,
+    "uri_rewrite_enable": true,
+    "admin": [
+      {
+        "user": "verynginx",
+        "enable": true,
+        "password": "verynginx"
+      }
+    ],
+    "summary_collect_rule": [],
+    "proxy_pass_enable": true,
+    "config_version": "0.36",
+    "redirect_rule": [
+      {
+        "to_uri": "/verynginx/index.html",
+        "matcher": "demo_other_verynginx_uri",
+        "enable": true
+      }
+    ]
+  }
