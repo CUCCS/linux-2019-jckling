@@ -2,6 +2,9 @@ sudo: required
 
 language: sh
 
+git:
+  lfs_skip_smudge: true
+
 before_install:
     - sudo apt-get update -q
     - export scversion="stable" # or "v0.4.7", or "latest"
@@ -10,8 +13,8 @@ before_install:
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
     - /usr/bin/shellcheck --version
     - sudo apt-get install ghostscript
-    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/worldcupplayerinfo.tsv"
-    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/web_log.tsv"
+    - cp 0x04/Codes/worldcupplayerinfo.tsv worldcupplayerinfo.tsv
+    - cp 0x04/Codes/web_log.tsv web_log.tsv
     - git config user.email jckling@163.com
     - git config user.name jckling
     - mkdir Img && cd Img
