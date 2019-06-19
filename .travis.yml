@@ -9,18 +9,68 @@ before_install:
     - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
     - /usr/bin/shellcheck --version
+    - sudo apt-get install ghostscript
+    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/worldcupplayerinfo.tsv"
+    - wget "https://media.githubusercontent.com/media/CUCCS/linux-2019-jckling/0x04/0x04/Codes/web_log.tsv"
+    - git config user.email jckling@163.com
+    - git config user.name jckling
+    - mkdir Img && cd Img
+    - git init
+    - git remote add origin https://${github_token}@github.com/jckling/Img.git
+    - git pull origin master
+    - cd ..
 
 script:
   - bash test.sh
+  - bash 0x04/Codes/task0.sh -h
+  - ls -l Img/shell_test/
+  - bash 0x04/Codes/task0.sh -f Img/shell_test/033.JPG -q 50
+  - bash 0x04/Codes/task0.sh -f Img/shell_test/054.PNG -r 50
+  - bash 0x04/Codes/task0.sh -f Img/shell_test/11.svg -c
+  - ls -l Img/shell_test/
+  - ls -l Img/shell_test/test0/
+  - bash 0x04/Codes/task0.sh -f Img/shell_test/test0/ -r 50 -t "linux"
+  - ls -l Img/shell_test/test0/
+  - bash 0x04/Codes/task1.sh -h
+  - ls -l Img/shell_test/test1/
+  - bash 0x04/Codes/task1.sh -f Img/shell_test/test1/ -r 50 -t "CUC"
+  - ls -l Img/shell_test/test1/
+  - bash 0x04/Codes/task2.sh -h
+  - bash 0x04/Codes/task2.sh -i
+  - bash 0x04/Codes/task2.sh -a
+  - bash 0x04/Codes/task2.sh -b
+  - bash 0x04/Codes/task2.sh -c
+  - bash 0x04/Codes/task2.sh -d
+  - bash 0x04/Codes/task2.sh -e
+  - bash 0x04/Codes/task3.sh -h
+  - bash 0x04/Codes/task3.sh -i
+  - bash 0x04/Codes/task3.sh -a
+  - bash 0x04/Codes/task3.sh -b
+  - bash 0x04/Codes/task3.sh -c
+  - bash 0x04/Codes/task3.sh -d
+  - bash 0x04/Codes/task3.sh -e
+  - bash 0x04/Codes/task3.sh -u "/ksc.html"
+  - bash 0x04/Codes/task3.sh -u "/"
 
 after_script:
   - /usr/bin/shellcheck test.sh
+  - /usr/bin/shellcheck 0x04/Codes/task0.sh
+  - /usr/bin/shellcheck 0x04/Codes/task1.sh
+  - /usr/bin/shellcheck 0x04/Codes/task2.sh
+  - /usr/bin/shellcheck 0x04/Codes/task3.sh
 
 after_failure:
   - id
   - pwd
   - df -h
   - cat error.log
+
+after_success:
+  - cd Img
+  - git add .
+  - git commit -m "Travis Image Test"
+  - git push origin master -f
+  - cd ..
 
 notifications:
   email:
