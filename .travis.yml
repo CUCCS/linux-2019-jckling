@@ -19,7 +19,7 @@ before_install:
     - git config user.name jckling
     - mkdir Img && cd Img
     - git init
-    - git remote add origin https://${github_token}@github.com/jckling/Img.git
+    - git remote add origin https://${github_token}@github.com/jckling/Assets.git
     - git pull origin master
     - cd ..
 
