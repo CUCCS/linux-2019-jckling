@@ -17,7 +17,7 @@ before_install:
     - cp 0x04/Codes/web_log.tsv web_log.tsv
     - git config user.email jckling@163.com
     - git config user.name jckling
-    - mkdir Img && cd Img
+    - mkdir Assets && cd Assets
     - git init
     - git remote add origin https://${github_token}@github.com/jckling/Assets.git
     - git pull origin master
@@ -26,18 +26,18 @@ before_install:
 script:
   - bash test.sh
   - bash 0x04/Codes/task0.sh -h
-  - ls -l Img/shell_test/
-  - bash 0x04/Codes/task0.sh -f Img/shell_test/033.JPG -q 50
-  - bash 0x04/Codes/task0.sh -f Img/shell_test/054.PNG -r 50
-  - bash 0x04/Codes/task0.sh -f Img/shell_test/11.svg -c
-  - ls -l Img/shell_test/
-  - ls -l Img/shell_test/test0/
-  - bash 0x04/Codes/task0.sh -f Img/shell_test/test0/ -r 50 -t "linux"
-  - ls -l Img/shell_test/test0/
+  - ls -l Assets/shell_test/
+  - bash 0x04/Codes/task0.sh -f Assets/shell_test/033.JPG -q 50
+  - bash 0x04/Codes/task0.sh -f Assets/shell_test/054.PNG -r 50
+  - bash 0x04/Codes/task0.sh -f Assets/shell_test/11.svg -c
+  - ls -l Assets/shell_test/
+  - ls -l Assets/shell_test/test0/
+  - bash 0x04/Codes/task0.sh -f Assets/shell_test/test0/ -r 50 -t "linux"
+  - ls -l Assets/shell_test/test0/
   - bash 0x04/Codes/task1.sh -h
-  - ls -l Img/shell_test/test1/
-  - bash 0x04/Codes/task1.sh -f Img/shell_test/test1/ -r 50 -t "CUC"
-  - ls -l Img/shell_test/test1/
+  - ls -l Assets/shell_test/test1/
+  - bash 0x04/Codes/task1.sh -f Assets/shell_test/test1/ -r 50 -t "CUC"
+  - ls -l Assets/shell_test/test1/
   - bash 0x04/Codes/task2.sh -h
   - bash 0x04/Codes/task2.sh -i
   - bash 0x04/Codes/task2.sh -a
@@ -69,7 +69,7 @@ after_failure:
   - cat error.log
 
 after_success:
-  - cd Img
+  - cd Assets
   - git add .
   - git commit -m "Travis Image Test"
   - git push origin master -f
